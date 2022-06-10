@@ -5,30 +5,30 @@ A similar package is available (sftp-watcher) but it depends on an ssh version t
 
 ## Installation
 
----
-
 Installation is simple: nothing that you haven't used before.
 
-    npm install sftpmonitor
+```bash
+npm install sftpmonitor
+```
 
 ## Configuration
-
----
 
 I have used the `sftp-watcher` package as inspiration so I decided to keep the same configuration options to make the transition as easy as possible.
 
 The configuration object that you pass to the function has the following properties and defaults:
 
-    {
-      host: "localhost",
-      username: "root",
-      password: "root",
-      privateKey: false,
-      path: "/",
-      port: 22,
-      heartbeat: 1000,
-      debugMode: false,
-    };
+```javascript
+{
+  host: "localhost",
+  username: "root",
+  password: "root",
+  privateKey: false,
+  path: "/",
+  port: 22,
+  heartbeat: 1000,
+  debugMode: false,
+};
+```
 
 Some notes:
 
@@ -42,24 +42,25 @@ Some notes:
 
 ## Usage
 
----
-
 The return value of the `sftpMonitor()` is both an Event Emitter and a promise. This means that you can use it in 2 ways (generally speaking):
 
 1.  Using the `then()` syntax for Promises:
 
-        const sftpMonitor = require("sftpmonitor");
-        sftpMonitor(config).then((event) => {
-          // do something
-        })
+    ```javascript
+    const sftpMonitor = require("sftpmonitor");
+    sftpMonitor(config).then((event) => {
+      // do something
+    });
+    ```
 
 2.  Or using the `await` syntax for async/await:
-
-        const sftpMonitor = require("sftpmonitor");
-        async function main() {
-          const event = await sftpMonitor(config)
-          // do something
-        }
+    ```javascript
+    const sftpMonitor = require("sftpmonitor");
+    async function main() {
+      const event = await sftpMonitor(config);
+      // do something
+    }
+    ```
 
 3 events are emitted by the watcher:
 
@@ -73,66 +74,66 @@ and 1 event is being listened to:
 
 ## Sample code
 
----
-
 ### Using the `then()` syntax for Promises
 
-    const sftpMonitor = require("sftpmonitor");
+```javascript
+const sftpMonitor = require("sftpmonitor");
 
-    sftpMonitor(config).then((event) => {
-      // Listening for create events
-      event.on("create", (file) => {
-        console.log(`File: ${file} was created`);
-      });
+sftpMonitor(config).then((event) => {
+  // Listening for create events
+  event.on("create", (file) => {
+    console.log(`File: ${file} was created`);
+  });
 
-      // Listening for delete events
-      event.on("delete", (file) => {
-        console.log(`File: ${file} was deleted`);
-      });
+  // Listening for delete events
+  event.on("delete", (file) => {
+    console.log(`File: ${file} was deleted`);
+  });
 
-      // Listening for update events
-      event.on("update", (file) => {
-        console.log(`File: ${file} was updated`);
-      });
+  // Listening for update events
+  event.on("update", (file) => {
+    console.log(`File: ${file} was updated`);
+  });
 
-      // Some logic goes here...
+  // Some logic goes here...
 
-      // Stop the watcher when you're done
-      event.emit("stop");
-    });
+  // Stop the watcher when you're done
+  event.emit("stop");
+});
+```
 
 ### Using the `await` syntax for async/await
 
-    const sftpMonitor = require("sftpmonitor");
+```javascript
+const sftpMonitor = require("sftpmonitor");
 
-    async function main() {
-      const event = await sftpMonitor(config)
-      // Listening for create events
-      event.on("create", (file) => {
-        console.log(`File: ${file} was created`);
-      });
+async function main() {
+  const event = await sftpMonitor(config);
+  // Listening for create events
+  event.on("create", (file) => {
+    console.log(`File: ${file} was created`);
+  });
 
-      // Listening for delete events
-      event.on("delete", (file) => {
-        console.log(`File: ${file} was deleted`);
-      });
+  // Listening for delete events
+  event.on("delete", (file) => {
+    console.log(`File: ${file} was deleted`);
+  });
 
-      // Listening for update events
-      event.on("update", (file) => {
-        console.log(`File: ${file} was updated`);
-      });
+  // Listening for update events
+  event.on("update", (file) => {
+    console.log(`File: ${file} was updated`);
+  });
 
-      // Some logic goes here...
+  // Some logic goes here...
 
-      // Stop the watcher when you're done
-      event.emit("stop");
-    }
+  // Stop the watcher when you're done
+  event.emit("stop");
+}
 
-    main();
+main();
+```
 
 ## Misc
-
----
 
 1. The `update` event is emitted _**only when a file is updated**_ (not when a file is created or deleted). Even though, technically, the `create` and `delete` events are also `update` events, this was a conscious choice based on the use-cases that I could think of: including `creates` and `deletes` on the update would force people to perform additional logic to figure out what kind of event it was (like comparing the updated entries with the created entries or checking if the file exists in the sFTP directory).
 
