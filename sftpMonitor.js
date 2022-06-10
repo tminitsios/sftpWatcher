@@ -3,7 +3,7 @@ const EventEmitter = require("events");
 
 const Client = require("ssh2").Client;
 
-function sftpWatcher(userConfig) {
+function sftpMonitor(userConfig) {
   return new Promise((resolve, reject) => {
     const defaultConfig = {
       host: "localhost",
@@ -155,4 +155,4 @@ function sftpInit(config) {
   });
 }
 
-module.exports = sftpWatcher;
+module.exports = sftpMonitor;

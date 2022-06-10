@@ -1,6 +1,6 @@
-# sftpWatcher
+# sftpMonitor
 
-sftpWatcher helps you monitor a remote SFTP directory for changes.
+sftpMonitor helps you monitor a remote SFTP directory for changes.
 A similar package is available (sftp-watcher) but it depends on an ssh version that has 2 known security vulnerabilities. It also didn't seem to work for me and hasn't been updated in 4 years so I decided to write my version.
 
 ## Installation
@@ -9,7 +9,7 @@ A similar package is available (sftp-watcher) but it depends on an ssh version t
 
 Installation is simple: nothing that you haven't used before.
 
-    npm install sftpwatcher
+    npm install sftpmonitor
 
 ## Configuration
 
@@ -40,20 +40,20 @@ The `debugMode` option will print several messages about the state of the watche
 
 ---
 
-The return value of the `sftpWatcher()` is both an Event Emitter and a promise. This means that you can use it in 2 ways (generally speaking):
+The return value of the `sftpMonitor()` is both an Event Emitter and a promise. This means that you can use it in 2 ways (generally speaking):
 
 1.  Using the `then()` syntax for Promises:
 
-        const sftpWatcher = require("sftpwatcher");
-        sftpWatcher(config).then((event) => {
+        const sftpMonitor = require("sftpmonitor");
+        sftpMonitor(config).then((event) => {
           // do something
         })
 
 2.  Or using the `await` syntax for async/await:
 
-        const sftpWatcher = require("sftpwatcher");
+        const sftpMonitor = require("sftpmonitor");
         async function main() {
-          const event = await sftpWatcher(config)
+          const event = await sftpMonitor(config)
           // do something
         }
 
@@ -73,9 +73,9 @@ and 1 event is being listened to:
 
 ### Using the `then()` syntax for Promises
 
-    const sftpWatcher = require("sftpwatcher");
+    const sftpMonitor = require("sftpmonitor");
 
-    sftpWatcher(config).then((event) => {
+    sftpMonitor(config).then((event) => {
       // Listening for create events
       event.on("create", (file) => {
         console.log(`File: ${file} was created`);
@@ -99,10 +99,10 @@ and 1 event is being listened to:
 
 ### Using the `await` syntax for async/await
 
-    const sftpWatcher = require("sftpwatcher");
+    const sftpMonitor = require("sftpmonitor");
 
     async function main() {
-      const event = await sftpWatcher(config)
+      const event = await sftpMonitor(config)
       // Listening for create events
       event.on("create", (file) => {
         console.log(`File: ${file} was created`);

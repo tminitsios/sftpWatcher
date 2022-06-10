@@ -1,8 +1,8 @@
 {
-  "name": "sftpwatcher",
+  "name": "sftpmonitor",
   "version": "1.0.0",
   "description": "Monitor a remote SFTP server for changes",
-  "main": "sftpWatcher.js",
+  "main": "sftpMonitor.js",
   "keywords": [
     "ssh",
     "ssh2",
@@ -12,7 +12,9 @@
     "sftp-watcher",
     "sftp-monitor",
     "sftp-watcher-js",
-    "sftpwatcher"
+    "sftpwatcher",
+    "sftpmonitor",
+    "sftp-monitor-js"
   ],
   "scripts": {},
   "repository": {
