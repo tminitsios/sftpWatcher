@@ -1,0 +1,28 @@
+{
+  "name": "sftpwatcher",
+  "version": "1.0.0",
+  "description": "Monitor a remote SFTP server for changes",
+  "main": "sftpWatcher.js",
+  "keywords": [
+    "ssh",
+    "ssh2",
+    "sftp",
+    "watcher",
+    "monitor",
+    "sftp-watcher",
+    "sftp-monitor",
+    "sftp-watcher-js",
+    "sftpwatcher"
+  ],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tminitsios/sftpWatcher.git"
+  },
+  "author": "T. Minitsios",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tminitsios/sftpWatcher/issues"
+  },
+  "homepage": "https://github.com/tminitsios/sftpWatcher#readme"
+}
