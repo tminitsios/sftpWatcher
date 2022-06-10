@@ -30,11 +30,15 @@ The configuration object that you pass to the function has the following propert
       debugMode: false,
     };
 
-I haven't tested the privateKey option but it "should" work. Currently, it only supports specifying a file path for the private key (it gets pulled with `fs`) but if there is enough interest, I might add the functionality to support a string or a buffer.
+Some notes:
 
-The `heartbeat` option is the amount of time in milliseconds between each check for changes (I borrowed it from the `sftp-watcher` package but also made it configurable).
+- _**You can pass an object that contains all of the above properties, none of them, or anything in-between. The defaults will be used for the missing ones.**_
 
-The `debugMode` option will print several messages about the state of the watcher and the sFTP connection. It's mostly what I thought would be a good idea to have for the future but I'm not convinced that it's _super useful_ (at least right now).
+- I haven't tested the privateKey option but it "should" work. Currently, it only supports specifying a file path for the private key (it gets pulled with `fs`) but if there is enough interest, I might add the functionality to support a string or a buffer.
+
+- The `heartbeat` option is the amount of time in milliseconds between each check for changes (I borrowed it from the `sftp-watcher` package but also made it configurable).
+
+- The `debugMode` option will print several messages about the state of the watcher and the sFTP connection. It's mostly what I thought would be a good idea to have for the future but I'm not convinced that it's _super useful_ (at least right now).
 
 ## Usage
 
