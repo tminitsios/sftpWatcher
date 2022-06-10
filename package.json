@@ -1,6 +1,6 @@
 {
   "name": "sftpmonitor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Monitor a remote SFTP server for changes",
   "main": "sftpMonitor.js",
   "keywords": [
